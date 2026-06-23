@@ -17,6 +17,6 @@ def min_number(n1: int, n2: int, n3: int) -> int:
     if n3 <= min:
         min = n3        
     return min
-def min_string(s1: str, s2: str, s3: str):
+def min_string(s1: str, s2: str, s3: str) -> str:
     return min_number(count_words(s1), count_words(s2), count_words(s3))
 print(min_string('   5678 91011 4444  ', '     12345 5678 91011 4444  5555', ' 555 12345 5678 91011 4444 666'))
