@@ -5,3 +5,6 @@ def odometer(oksana):
         length += oksana[i] * ( oksana[i + 1] - prev_time)
         prev_time = oksana[i + 1]
     return length 
+
+
+print(odometer([10,1,20,2]))
