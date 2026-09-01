@@ -27,7 +27,7 @@ def WordSearch(lens, s, subs):
         tmp2 = s[len_substr]         
         if s[len_substr] == ' ':
             strs.append(res_str)
-            move_index = len_substr
+            move_index = len_substr + 1
             res_str = ''
         elif space_index == -1:    
             strs.append(res_str)
@@ -66,5 +66,6 @@ def WordSearch(lens, s, subs):
                         break
             else:
                 find = 0
+                
         res.append(find)
     return res
