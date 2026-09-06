@@ -24,8 +24,9 @@ def TheRabbitsFoot(s: str, encode: bool) -> str:
             for k in range(strs):
                 if tmp_res[k][m] is not None: 
                     str_final += tmp_res[k][m]
-            str_final += ' '    
-        return str_final             
+            str_final += ' '
+        str_final_strip = str_final.strip()        
+        return str_final_strip             
     else:
         s_res: list = s.replace(' ', '')
         res_sqrt: float = math.sqrt(len(s_res))
@@ -50,5 +51,6 @@ def TheRabbitsFoot(s: str, encode: bool) -> str:
         for i in range(strs):
             for j in range(column):
                 if matrix[i][j] is not None:
-                    tmp_res += matrix[i][j]           
-        return tmp_res 
+                    tmp_res += matrix[i][j]
+        str_final_strip = tmp_res.strip()                       
+        return str_final_strip 
