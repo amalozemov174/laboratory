@@ -3,6 +3,8 @@ def Unmanned(L: int, N: int, track: list):
     result: int = 0
     time: int = 0
     length: int = L
+    if L < track[0][0]:
+        return L
     for i in range(N):
         tmp = track[i]
         point_svet = tmp[0]
@@ -16,4 +18,4 @@ def Unmanned(L: int, N: int, track: list):
         if svet_wait > 0:
             time = time + svet_wait            
     time = time + length         
-    return time
+    return time 
