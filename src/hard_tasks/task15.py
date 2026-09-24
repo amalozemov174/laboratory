@@ -16,9 +16,15 @@ def TankRush(H1, W1, S1, H2, W2, S2):
         field2.append(tmp)    
     for x in range(H1 - H2 + 1):
         for y in range(W1 - W2 + 1):
-            res = False
+            res = True
             for x1 in range(H2):
+                if res != True:
+                    break
                 for y1 in range(W2):
+                    tmpx = x + x1
+                    tmpy = y + y1
+                    tmpx1 = x1
+                    tmpy1 = y1
                     f1 = field1[x + x1][y + y1]
                     f2 = field2[x1][y1]
                     if f1 != f2:
