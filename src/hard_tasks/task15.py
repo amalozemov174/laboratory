@@ -19,12 +19,6 @@ def TankRush(H1, W1, S1, H2, W2, S2):
             res = False
             for x1 in range(H2):
                 for y1 in range(W2):
-                    tmp_x = x
-                    tmp_y = y
-                    tmp_x1 = x1
-                    tmp_y1 = y1
-                    f1 = field1[x + x1][y + y1]
-                    f2 = field2[x1][y1]
                     if f1 != f2:
                         res = False
                         break 
@@ -32,4 +26,6 @@ def TankRush(H1, W1, S1, H2, W2, S2):
                         res = True
             if res:
                 break
+        if res:
+            break        
     return res
