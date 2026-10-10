@@ -54,7 +54,7 @@ def BastShoe(command):
                 command_list.append(command + ' ' + current_str)
                 tmp4 = command_list[0].split(maxsplit=1)
                 current_str = command_list[0].split(maxsplit=1)[1]     
-        for i in range(len(command_list) - 1, 0, -1):
+        for i in range(len(command_list) - 1, -1, -1):
             prev_task = int(command_list[i].split()[0])
             if prev_task == 1 or prev_task == 2:
                 temp_i = i
@@ -74,7 +74,7 @@ def BastShoe(command):
             command_list.pop(temp_i)
     elif task == 5:
         temp_i = -1     
-        for i in range(len(command_list) - 1, 0, -1):
+        for i in range(len(command_list) - 1, -1, -1):
             prev_task = int(command_list[i].split()[0])
             if prev_task == 4:
                 temp_i = i
