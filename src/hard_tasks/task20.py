@@ -35,6 +35,8 @@ def BastShoe(command):
     elif task == 3:     
         get_elem = int(command.split()[1])
         command_list.append(command)
+        if get_elem > len(current_str):
+            return ''    
         return current_str[get_elem]
     elif task == 4:
         temp_i = -1
