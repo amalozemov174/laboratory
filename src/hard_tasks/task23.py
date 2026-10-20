@@ -34,10 +34,13 @@ def TreeOfLife(H, W, N, tree):
                         if prev_y >= 0 and prev_y <= W - 1 and arr[index_x][prev_y] <= 3:
                             arr[index_x][prev_y] = 0
                         arr[index_x][index_y] = 0
+    res = []                    
     for m in range(len(tree)):
+        tmp = ''
         for n in range(len(tree[m])):
             if arr[m][n] == 0:
-                arr[m][n] = '.'
+                tmp += '.'
             else:
-                arr[m][n] = '+'
-    return arr 
+                tmp += '+'
+        res.append(tmp)        
+    return res 
