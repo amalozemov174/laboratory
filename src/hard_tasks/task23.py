@@ -25,13 +25,13 @@ def TreeOfLife(H, W, N, tree):
                         next_y = index_y + 1
                         prev_x = index_x - 1
                         prev_y = index_y - 1
-                        if next_x >= 0 and next_x <= H - 1 and arr[next_x][index_y] <= 3:
+                        if next_x >= 0 and next_x <= H - 1 and arr[next_x][index_y] < 3:
                             arr[next_x][index_y] = 0
-                        if next_y >= 0 and next_y <= W - 1 and arr[index_x][next_y] <= 3:
+                        if next_y >= 0 and next_y <= W - 1 and arr[index_x][next_y] < 3:
                             arr[index_x][next_y] = 0
-                        if prev_x >= 0 and prev_x <= H - 1 and arr[prev_x][index_y] <= 3:
+                        if prev_x >= 0 and prev_x <= H - 1 and arr[prev_x][index_y] < 3:
                             arr[prev_x][index_y] = 0
-                        if prev_y >= 0 and prev_y <= W - 1 and arr[index_x][prev_y] <= 3:
+                        if prev_y >= 0 and prev_y <= W - 1 and arr[index_x][prev_y] < 3:
                             arr[index_x][prev_y] = 0
                         arr[index_x][index_y] = 0
     res = []                    
