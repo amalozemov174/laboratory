@@ -10,32 +10,36 @@ def MatrixTurn(Matrix, M, N, T):
         matrix_real.append(tmp)
     all_layer = []
     all_layer1 = []
-    for l in range(layer):   
+    start_i = 0 
+    start_j = 0
+    end_i = M
+    end_j = N
+    for l in range(layer // 2):   
         tmp = []
         all_layers = {}
-        for i in range(0, 1):
-            for j in range(0, N - 1):
+        for i in range(start_i, start_i + 1):
+            for j in range(start_j, end_j - 1):
                 tmp_i = i
                 tmp_j = j
                 tmp.append(matrix_real[i][j])
                 all_layers[(i,j)] = matrix_real[i][j]
                 matrix_real[i][j] = 0
-        for i in range(0, M - 1):
-            for j in range(N - 1, N):
+        for i in range(start_i, end_i - 1):
+            for j in range(end_j - 1, end_j):
                 tmp_i = i
                 tmp_j = j                
                 tmp.append(matrix_real[i][j])
                 all_layers[(i,j)] = matrix_real[i][j]
                 matrix_real[i][j] = 0
-        for i in range(M - 1, M):
-            for j in range(N - 1, 0, -1):
+        for i in range(end_i - 1, end_i):
+            for j in range(end_j - 1, start_j, -1):
                 tmp_i = i
                 tmp_j = j                
                 tmp.append(matrix_real[i][j])
                 all_layers[(i,j)] = matrix_real[i][j]
                 matrix_real[i][j] = 0
-        for i in range(M - 1, 0, -1):
-            for j in range(0, 1):
+        for i in range(end_i - 1, start_i, -1):
+            for j in range(start_j, start_j + 1):
                 tmp_i = i
                 tmp_j = j                
                 tmp.append(matrix_real[i][j])
@@ -44,22 +48,33 @@ def MatrixTurn(Matrix, M, N, T):
         all_layer.append(tmp)
         all_layer1.append(all_layers)
         tmp_mtrx = []
-        for i in range(M):
-            tmp = []
-            for j in range(N):
-                if matrix_real[i][j] != 0: 
-                    tmp.append(int(matrix_real[i][j]))
-            if len(tmp) != 0:
-                tmp_mtrx.append(tmp)
-        matrix_real = tmp_mtrx
         if len(matrix_real) == 0:
             break
-        N = N - 2
-        M = M - 2
+        start_i += 1 
+        start_j += 1
+        end_i -= 1
+        end_j -= 1
+                        
     for i in range(len(all_layer)):
         for t1 in range(T):
             all_layer[i].insert(0, all_layer[i].pop())
-    #for l in range(layer):
+    res_matrix = []
+    for i in range(M):
+        tmp = []
+        for j in range(N):
+            tmp.append(0)
+        res_matrix.append(tmp)    
+    for i in range(len(all_layer)):
+        layer_elements = all_layer[i]
+        layer_coords = list(all_layer1[i].keys())        
+        for idx in range(len(layer_elements)):
+            coord = layer_coords[idx]
+            res_matrix[coord[0]][coord[1]] = layer_elements[idx]
+    final_result = []
+    for row in res_matrix:
+        string_row = ""
+        for number in row:
+            string_row += str(number)
+        final_result.append(string_row)
         
-            
-MatrixTurn(["123456", "234567", "345678", "456789"], 4,6, 3)            
+    return final_result
