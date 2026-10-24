@@ -82,11 +82,10 @@ def MatrixTurn(Matrix, M, N, T):
         for j in range(N):
             if res_matrix[i][j] == 0 and matrix_real[i][j] != 0:
                 res_matrix[i][j] = matrix_real[i][j]                
-    final_result = []
+    Matrix.clear()
     for row in res_matrix:
         string_row = ""
         for number in row:
             string_row += str(number)
-        final_result.append(string_row)
-        
-    return final_result
+        Matrix.append(string_row)        
+    #Matrix = final_result
