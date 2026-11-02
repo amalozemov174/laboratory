@@ -6,8 +6,8 @@ def Football(F, N):
             check = False
     if check:
         return check
-    for i in range(N - 1):
-        for j in range(N - 1):
+    for i in range(N):
+        for j in range(N):
             if i != j:
                 tmp = F.copy() 
                 tmp1 = F[i]
