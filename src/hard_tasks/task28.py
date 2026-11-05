@@ -1,5 +1,6 @@
 def Keymaker(k):
     keys = []
+    res = ''
     for i in range(k):
         keys.append(0)
     for i in range(k):
@@ -8,5 +9,7 @@ def Keymaker(k):
                 if keys[j] == 0:
                     keys[j] = 1
                 else:
-                    keys[j] = 0            
-    return keys
+                    keys[j] = 0
+    for i in range(k):
+        res += str(keys[i])
+    return res 
