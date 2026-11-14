@@ -1,0 +1,107 @@
+class Node:
+
+    def __init__(self, v):
+        self.value = v
+        self.next = None
+
+class LinkedList:
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def add_in_tail(self, item):
+        if self.head is None:
+            self.head = item
+        else:
+            self.tail.next = item
+        self.tail = item
+
+    def print_all_nodes(self):
+        node = self.head
+        while node != None:
+            print(node.value)
+            node = node.next
+
+    def find(self, val):
+        node = self.head
+        while node is not None:
+            if node.value == val:
+                return node
+            node = node.next
+        return None
+        
+#1.4
+    def find_all(self, val):
+        res = []
+        node = self.head
+        while node is not None:
+            if node.value == val:
+                res.append(node.value)
+            node = node.next
+        return res
+
+#1.1, 1.2
+    def delete(self, val, all=False):
+        node = self.head
+        prev_node = None
+        while node is not None:
+            if node.value == val:
+                if prev_node == None:
+                    if node.next == None:
+                        self.tail = None
+                    self.head = node.next                    
+                    node = node.next
+                elif node.next == None:    
+                    prev_node.next = None
+                    self.tail = prev_node
+                    node = node.next
+                else:
+                    prev_node.next = node.next
+                    node = prev_node.next
+                if all != True:
+                   return None
+            else:       
+                prev_node = node       
+                node = node.next            
+        return None
+    
+#1.3
+    def clean(self):
+        self.head = None
+        self.tail = None
+        
+#1.5
+    def len(self):
+        res = 0
+        node = self.head
+        while node is not None:
+            res += 1
+            node = node.next
+        return res
+        
+#1.6
+    def insert(self, afterNode, newNode):
+        node = self.head
+        if newNode == None:
+            self.tail = afterNode
+            afterNode.next = None
+            return None
+        if afterNode == None:
+            if self.tail is None and self.head is None:
+                self.head = newNode
+                self.tail = newNode
+            else:    
+                newNode.next = self.head
+                self.head = newNode
+            return None        
+        while node is not None:
+            if node == afterNode:
+                tmp = node.next 
+                node.next = newNode
+                newNode.next = tmp
+                if node == self.tail:
+                    self.tail = newNode
+                return None    
+            node = node.next    
+        return None
