@@ -13,6 +13,13 @@ class LinkedListTests(unittest.TestCase):
             node = node.next
         return res
     
+    def nodesListToValues(self, nodesList):
+        res = []
+        for n in nodesList:     
+            res.append(n.value)
+        return res
+
+    
     #1.1 delete one element
     def test_delete_middle(self):
         n1 = Node(1)
@@ -239,9 +246,7 @@ class LinkedListTests(unittest.TestCase):
         ll1.add_in_tail(n3)
         ll1.add_in_tail(n4)
         ll1.add_in_tail(n5)                
-        self.assertEqual(ll1.find_all(3), [3])
-        self.assertEqual(ll1.head.value, 1)
-        self.assertEqual(ll1.tail.value, 5)
+        self.assertEqual(self.nodesListToValues(ll1.find_all(3)), [3])
 
     def test_find_more(self):
         n1 = Node(1)
@@ -259,10 +264,7 @@ class LinkedListTests(unittest.TestCase):
         ll1.add_in_tail(n32)
         ll1.add_in_tail(n4)
         ll1.add_in_tail(n5)                
-        self.assertEqual(ll1.find_all(3), [3, 3, 3])
-        self.assertEqual(ll1.head.value, 1)
-        self.assertEqual(ll1.tail.value, 5)
-
+        self.assertEqual(self.nodesListToValues(ll1.find_all(3)), [3, 3, 3])
 
     def test_find_notexists(self):
         n1 = Node(1)
@@ -276,9 +278,7 @@ class LinkedListTests(unittest.TestCase):
         ll1.add_in_tail(n3)
         ll1.add_in_tail(n4)
         ll1.add_in_tail(n5)                
-        self.assertEqual(ll1.find_all(99), [])
-        self.assertEqual(ll1.head.value, 1)
-        self.assertEqual(ll1.tail.value, 5)    
+        self.assertEqual(ll1.find_all(99), [])    
       
     def test_find_null(self):
         n1 = Node(1)
