@@ -81,3 +81,21 @@ def merge(linkedList1, linkedList2):
             res.add_in_tail(Node(node1.value))    
             node1 = node1.next
     return res 
+
+#2.14.*
+class Node:
+    def __init__(self, v):
+        self.value = v
+        self.prev = None
+        self.next = None
+
+class DummyNode(Node):
+    def __init__(self):
+        super().__init__(None)
+
+class LinkedList2:  
+    def __init__(self):        
+        self.head = DummyNode()
+        self.tail = DummyNode()
+        self.head.next = self.tail
+        self.tail.prev = self.head
