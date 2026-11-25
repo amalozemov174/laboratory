@@ -36,16 +36,19 @@ class DynArray:
         if i < 0 or i > self.count:
             raise IndexError('Index is out of bounds')
         tmp_prev = self.array[i]
-        if (self.count + 1) > self.capacity:
-            self.resize(2*self.capacity)
-        for index in range(i + 1, self.count + 1):
-            if index == self.count:
-                self.append(tmp_prev)
-            else:
-                tmp = self.array[index]
-                self.array[index] = tmp_prev
-                tmp_prev = tmp
-        self.array[i] = itm
+        if self.count == 0:
+            self.array[i] = itm
+        else:  
+            if (self.count + 1) > self.capacity:
+                self.resize(2*self.capacity)
+            for index in range(i + 1, self.count + 1):
+                if index == self.count:
+                    self.append(tmp_prev)
+                else:
+                    tmp = self.array[index]
+                    self.array[index] = tmp_prev
+                    tmp_prev = tmp
+            self.array[i] = itm
         
 #2. Добавьте метод delete(i), который удаляет объект из i-й позиции, при необходимости сжимая буфер.
     def delete(self, i):

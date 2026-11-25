@@ -23,6 +23,14 @@ class DynArrayTests(unittest.TestCase):
         da.insert(3, 99)
         self.assertEqual(self.DynArrayToList(da), [1, 2, 3, 99, 4, 5])
         self.assertEqual(da.capacity, 16)
+        
+#4.1.1. вставка в пустой список;
+        
+    def test_add_low_then_buffer(self):
+        da = DynArray()        
+        da.insert(0, 99)
+        self.assertEqual(self.DynArrayToList(da), [99])
+        self.assertEqual(da.capacity, 16)        
 
 #4.2 вставка элемента, когда в результате превышен размер буфера (проверьте также корректное изменение размера буфера);
 
